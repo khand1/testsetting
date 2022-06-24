@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using System.IO;
 
 namespace testsetting
 {
@@ -20,7 +21,7 @@ namespace testsetting
             Host.CreateDefaultBuilder(args)
                 .ConfigureAppConfiguration((hostingContext, config) =>
                 {
-                    config.AddJsonFile("setting\\appsettings.json",
+                    config.AddJsonFile(Path.Combine(Directory.GetCurrentDirectory(), "setting", "appsettings.json"),
                         optional: false, reloadOnChange: false);
                 })
                 .ConfigureWebHostDefaults(webBuilder =>
